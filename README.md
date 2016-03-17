@@ -1,4 +1,4 @@
-# angular-pt-2016
+# Curos AngularJS
 Angular Polo Tecnologico 2016
 
 ## Clase 1
