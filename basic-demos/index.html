@@ -1,29 +1,35 @@
 <!doctype html>
-<html ng-app="todoList">
+<html ng-app="calculadoraMod">
 
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
   <script>
     angular
-      .module('todoList', [])
+      .module('calculadoraMod', [])
       .config(function(){
 
       })
-      .run(function(){
-
+      .run(function($rootScope){
+        $rootScope.titulo = "Calculadora";
       })
-      .controller('proveedores', function(){
-
-      })
+      .controller('calcCtrl', function($scope, $rootScope){
+        $scope.resultado = "N";
+        $scope.titulo = "Calculadora";
+        $scope.btns = '1234567890+-/*='.split('');
+        $rootScope.titulo = "222";
+        $scope.calc = function(v){
+          console.log(v);
+        }
+      });
   </script>
 </head>
 
 <body>
-  <div>
-    <label>Name:</label>
-    <input type="text" ng-model="yourName" placeholder="Enter a name here">
-    <hr>
-    <h1>Hello {{yourName}}!</h1>
+  <h1>{{titulo}}</h1>
+  <div ng-controller="calcCtrl">
+    <h1>{{titulo}}</h1>
+    <input type="text" ng-model="resultado" placeholder="Enter a name here">
+    <button ng-repeat="val in btns" ng-click="calc(val)">{{val}}</button>
   </div>
 </body>
 
