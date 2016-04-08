@@ -12,13 +12,18 @@
       .run(function($rootScope){
         $rootScope.titulo = "Calculadora";
       })
-      .controller('calcCtrl', function($scope, $rootScope){
-        $scope.resultado = "N";
+      .controller('calcCtrl', function($scope, $rootScope, $log){
+        $scope.resultado = '';
         $scope.titulo = "Calculadora";
         $scope.btns = '1234567890+-/*='.split('');
         $rootScope.titulo = "222";
         $scope.calc = function(v){
-          console.log(v);
+          $log.log(v);
+          if (v === '=') {
+            $scope.resultado = eval($scope.resultado);
+          } else {
+            $scope.resultado += v;
+          }
         }
       });
   </script>
